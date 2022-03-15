@@ -1,5 +1,9 @@
 {
-  "name": "todoreact",
-  "version": "0.1.0",
-  "private": true
+    "name": "todoreact",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "redux-thunk": "^2.4.1"
+    },
+    "license": "MIT"
 }
