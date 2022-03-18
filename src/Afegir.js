@@ -8,7 +8,7 @@ export default function Afegir() {
       method: "POST",
       body: JSON.stringify({
         title: titol,
-        details: "què passa?",
+        details: "no hase falta desir nada más",
         completed: false,
       }),
       headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -18,8 +18,6 @@ export default function Afegir() {
   }
   return (
     <div>
-      Afegir un nou ToDo amb un nou títol i com a no completat
-      <br />
       <label>Títol de la Nova tasca:&nbsp;</label>
       <input type="text" id="titol" ref={inputRef} />
       <br />
