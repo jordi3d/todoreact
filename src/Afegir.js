@@ -23,7 +23,7 @@ export default function Afegir() {
       <br />
       <input
         type="submit"
-        value="Submit"
+        value="Afegir"
         onClick={() => novaentrada(inputRef.current.value)}
       />
     </div>
