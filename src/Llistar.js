@@ -20,6 +20,7 @@ export default function Llistar() {
       }),
       headers: { "Content-type": "application/json; charset=UTF-8" },
     }).then((response) => response.json());
+    showtasques();
   }
   function showtasques() {
     fetch("https://tc-todo-2022.herokuapp.com/todos", {
