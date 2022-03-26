@@ -56,7 +56,7 @@ function App() {
   function Tasqueta({ tasca }) {
     return (
       <>
-        <td className={tasca.completed && "completada" ? "completada" : ""}>
+        <td className={tasca.completed ? "completada" : ""}>
           <input
             type="checkbox"
             value={tasca.completed}
@@ -64,12 +64,8 @@ function App() {
             onChange={() => canviaentrada(tasca.id)}
           />
         </td>
-        <td className={tasca.completed && "completada" ? "completada" : ""}>
-          {tasca.title}
-        </td>
-        <td className={tasca.completed && "completada" ? "completada" : ""}>
-          {tasca.details}
-        </td>
+        <td className={tasca.completed ? "completada" : ""}>{tasca.title}</td>
+        <td className={tasca.completed ? "completada" : ""}>{tasca.details}</td>
       </>
     );
   }
@@ -85,16 +81,20 @@ function App() {
         />
         <br />
         <table>
-          <tr>
-            <th>DONE</th>
-            <th>TITLE</th>
-            <th>DETAILS</th>
-          </tr>
-          {tasques.map((tasca, index) => (
+          <thead>
             <tr>
-              <Tasqueta key={tasca.id} tasca={tasca} />
+              <th>FETA</th>
+              <th>TITOL</th>
+              <th>DETALLS</th>
             </tr>
-          ))}
+          </thead>
+          <tbody>
+            {tasques.map((tasca, index) => (
+              <tr key={tasca.id}>
+                <Tasqueta tasca={tasca} />
+              </tr>
+            ))}
+          </tbody>
         </table>
         <br />
         <Afegir onTascaAfegida={(tasca) => setTasques([...tasques, tasca])} />
