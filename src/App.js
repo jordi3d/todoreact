@@ -35,7 +35,6 @@ function App() {
       .then((response) => response.json())
       .then((json) => setTask(JSON.parse(JSON.stringify(json))));
     let newstatus = !task.completed;
-    console.log("modificant el registre ", id, " amb ", newstatus);
     fetch(`${ENDPOINT}/${id}`, {
       method: "POST",
       body: JSON.stringify({
@@ -56,16 +55,22 @@ function App() {
   }
   function Tasqueta({ tasca }) {
     return (
-      <li className={tasca.completed && "completada" ? "completada" : ""}>
-        <input
-          type="checkbox"
-          value={tasca.completed}
-          checked={tasca.completed ? "checked" : false}
-          onChange={() => canviaentrada(tasca.id)}
-        />
-        &nbsp;Title={tasca.title}
-        &nbsp;Details={tasca.details}
-      </li>
+      <>
+        <td className={tasca.completed && "completada" ? "completada" : ""}>
+          <input
+            type="checkbox"
+            value={tasca.completed}
+            checked={tasca.completed ? "checked" : false}
+            onChange={() => canviaentrada(tasca.id)}
+          />
+        </td>
+        <td className={tasca.completed && "completada" ? "completada" : ""}>
+          {tasca.title}
+        </td>
+        <td className={tasca.completed && "completada" ? "completada" : ""}>
+          {tasca.details}
+        </td>
+      </>
     );
   }
 
@@ -78,17 +83,28 @@ function App() {
           value="Filtrar només pendents"
           onClick={() => showtasques(true)}
         />
-        <ul
-          style={{
-            listStyleType: "none",
-            fontSize: "11px",
-            textAlign: "left",
-          }}
-        >
+        <br />
+        <table>
+          <tr>
+            <th>DONE</th>
+            <th>TITLE</th>
+            <th>DETAILS</th>
+          </tr>
+          {/*<ul
+            style={{
+              listStyleType: "none",
+              fontSize: "11px",
+              textAlign: "left",
+            }}
+          >*/}
           {tasques.map((tasca, index) => (
-            <Tasqueta key={tasca.id} tasca={tasca} />
+            <tr>
+              <Tasqueta key={tasca.id} tasca={tasca} />
+            </tr>
           ))}
-        </ul>
+          {/*</ul>*/}
+        </table>
+        <br />
         <Afegir onTascaAfegida={(tasca) => setTasques([...tasques, tasca])} />
       </header>
     </div>
