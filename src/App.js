@@ -90,19 +90,11 @@ function App() {
             <th>TITLE</th>
             <th>DETAILS</th>
           </tr>
-          {/*<ul
-            style={{
-              listStyleType: "none",
-              fontSize: "11px",
-              textAlign: "left",
-            }}
-          >*/}
           {tasques.map((tasca, index) => (
             <tr>
               <Tasqueta key={tasca.id} tasca={tasca} />
             </tr>
           ))}
-          {/*</ul>*/}
         </table>
         <br />
         <Afegir onTascaAfegida={(tasca) => setTasques([...tasques, tasca])} />
