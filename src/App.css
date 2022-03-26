@@ -12,3 +12,8 @@
     font-size: calc(10px + 2vmin);
     color: white;
 }
+
+li.completada {
+    background-color: red;
+    text-decoration: line-through;
+}
